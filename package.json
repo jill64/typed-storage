@@ -28,7 +28,9 @@
     "access": "public"
   },
   "scripts": {
-    "build": "pnpm -r build && publint",
+    "build": "pnpm build:lib && pnpm build:site && publint",
+    "build:lib": "cd packages/lib && pnpm build",
+    "build:site": "cd packages/site && pnpm build",
     "check": "cd packages/site && pnpm check",
     "test": "pnpm -r build && cd packages/site && pnpm test",
     "format": "prettier --write . --plugin prettier-plugin-svelte .",
