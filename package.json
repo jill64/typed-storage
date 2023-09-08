@@ -44,5 +44,9 @@
     "prettier-plugin-svelte": "^3.0.3",
     "publint": "^0.2.2",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@jill64/attempt": "^0.1.0",
+    "esm-env": "^1.0.0"
   }
 }
