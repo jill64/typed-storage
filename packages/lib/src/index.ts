@@ -1,5 +1,4 @@
 import { attempt } from '@jill64/attempt'
-import Modernizr from 'modernizr'
 
 type Transformer<T> = {
   parse: (value: string) => T
@@ -37,7 +36,7 @@ export const typedStorage: TypedStorage = (key, options) => {
   const { guard, defaultValue } = options
 
   const available = () =>
-    typeof window !== 'undefined' && Modernizr.localstorage
+    typeof window !== 'undefined' && typeof localStorage !== 'undefined'
 
   const transformer = options.transformer ?? {
     parse: (value: string) => JSON.parse(value),

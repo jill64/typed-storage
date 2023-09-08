@@ -48,8 +48,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@jill64/attempt": "^0.1.0",
-    "@types/modernizr": "^3.5.3",
-    "modernizr": "^3.13.0"
+    "@jill64/attempt": "^0.1.0"
   }
 }
