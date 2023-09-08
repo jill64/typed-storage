@@ -1,5 +1,5 @@
-import { BROWSER } from 'esm-env'
 import { attempt } from '@jill64/attempt'
+import { BROWSER } from 'esm-env'
 
 type Transformer<T> = {
   parse: (value: string) => T
@@ -36,7 +36,13 @@ type TypedStorage = {
 export const typedStorage: TypedStorage = (key, options) => {
   const { guard, defaultValue } = options
 
-  const available = () => BROWSER && 'localStorage' in window
+  const available = () => {
+    if (!BROWSER) {
+      return false
+    }
+
+    return 'localStorage' in window && window.localStorage !== null
+  }
 
   const transformer = options.transformer ?? {
     parse: (value: string) => JSON.parse(value),
