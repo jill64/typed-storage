@@ -1,5 +1,5 @@
 import { attempt } from '@jill64/attempt'
-import { BROWSER } from 'esm-env'
+import Modernizr from 'modernizr'
 
 type Transformer<T> = {
   parse: (value: string) => T
@@ -36,13 +36,8 @@ type TypedStorage = {
 export const typedStorage: TypedStorage = (key, options) => {
   const { guard, defaultValue } = options
 
-  const available = () => {
-    if (!BROWSER) {
-      return false
-    }
-
-    return 'localStorage' in window && window.localStorage !== null
-  }
+  const available = () =>
+    typeof window !== 'undefined' && Modernizr.localstorage
 
   const transformer = options.transformer ?? {
     parse: (value: string) => JSON.parse(value),
