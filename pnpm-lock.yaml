@@ -11,9 +11,6 @@ importers:
       '@jill64/attempt':
         specifier: ^0.1.0
         version: 0.1.0
-      esm-env:
-        specifier: ^1.0.0
-        version: 1.0.0
     devDependencies:
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.6.0
@@ -1023,6 +1020,7 @@ packages:
 
   /esm-env@1.0.0:
     resolution: {integrity: sha512-Cf6VksWPsTuW01vU9Mk/3vRue91Zevka5SjyNf3nEpokFRuqt/KjUQoGAwq9qMmhpLTHmXzSIrFRw8zxWzmFBA==}
+    dev: true
 
   /espree@9.6.1:
     resolution: {integrity: sha512-oruZaFkjorTpF32kDSI5/75ViwGeZginGGy2NoOSg3Q9bnwlnmDm4HLnkl0RE3n+njDXR037aY1+x58Z/zFdwQ==}
