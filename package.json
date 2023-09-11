@@ -37,15 +37,15 @@
     "lint": "prettier --check . --plugin prettier-plugin-svelte . && eslint ."
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "@typescript-eslint/parser": "^6.6.0",
-    "eslint": "^8.48.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-svelte": "^2.33.0",
-    "prettier": "^3.0.3",
-    "prettier-plugin-svelte": "^3.0.3",
-    "publint": "^0.2.2",
-    "typescript": "^5.2.2"
+    "@typescript-eslint/eslint-plugin": "6.6.0",
+    "@typescript-eslint/parser": "6.6.0",
+    "eslint": "8.48.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-svelte": "2.33.0",
+    "prettier": "3.0.3",
+    "prettier-plugin-svelte": "3.0.3",
+    "publint": "0.2.2",
+    "typescript": "5.2.2"
   },
   "dependencies": {
     "@jill64/attempt": "^0.1.0"
