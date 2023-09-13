@@ -1,4 +1,4 @@
-import { typedStorage } from '../../../../dist/index.js'
+import { typedStorage } from '$lib/index.js'
 import { scanner, string, number, array, boolean } from 'typescanner'
 import isEqual from 'lodash/isEqual.js'
 
