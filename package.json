@@ -48,7 +48,7 @@
     "prettier-plugin-svelte": "3.0.3",
     "publint": "0.2.2",
     "typescript": "5.2.2",
-    "@playwright/test": "1.37.1",
+    "@playwright/test": "1.38.0",
     "@sveltejs/adapter-auto": "2.1.0",
     "@sveltejs/kit": "1.25.0",
     "@types/lodash": "4.14.198",
