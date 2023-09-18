@@ -1,5 +1,7 @@
 # typed-storage
 
+![github-actions-ci](https://github.com/jill64/typed-storage/actions/workflows/ci.yml/badge.svg)
+
 Type-safe localStorage wrapper
 
 ## Install

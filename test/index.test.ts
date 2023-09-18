@@ -1,75 +1,70 @@
+import { array, boolean, number, scanner, string } from 'typescanner'
+import { expect, test } from 'vitest'
 import { typedStorage } from '../src/index'
-import { scanner, string, number, array, boolean } from 'typescanner'
-import isEqual from 'lodash/isEqual.js'
 
-const test = <T>(
-  store: {
-    get: () => T | undefined
-    set: (value: T) => Error | null
-    remove: () => void
-  },
-  value: T,
-  defaultValue?: T
-) => {
+test('string', () => {
+  const store = typedStorage('string', {
+    guard: (x): x is string => typeof x === 'string',
+    transformer: { parse: (x) => x, stringify: (x) => x }
+  })
+
   store.remove()
 
-  if (!isEqual(store.get(), defaultValue)) {
-    return false
+  expect(store.get()).toBe(undefined)
+  expect(store.set('value')).toBe(null)
+  expect(store.get()).toBe('value')
+})
+
+test('null', () => {
+  const store = typedStorage('null', {
+    guard: (x: unknown): x is null => x === null
+  })
+
+  store.remove()
+
+  expect(store.get()).toBe(undefined)
+  expect(store.set(null)).toBe(null)
+  expect(store.get()).toBe(null)
+})
+
+test('object', () => {
+  const value = {
+    foo: 'bar',
+    baz: 1,
+    qux: true,
+    quux: [1, 2, 3]
   }
 
-  if (store.set(value)) {
-    return false
-  }
+  const guard = scanner({
+    foo: string,
+    baz: number,
+    qux: boolean,
+    quux: array(number)
+  })
 
-  return isEqual(store.get(), value)
-}
+  const store = typedStorage('object', {
+    guard
+  })
 
-export const tests: ((id: string) => boolean)[] = [
-  (id) => {
-    const store = typedStorage(id, {
-      guard: (x): x is string => typeof x === 'string',
-      transformer: { parse: (x) => x, stringify: (x) => x }
-    })
+  store.remove()
 
-    return test(store, 'value')
-  },
-  (id) => {
-    const store = typedStorage(id, {
-      guard: (x: unknown): x is null => x === null
-    })
+  expect(store.get()).toBe(undefined)
+  expect(store.set(value)).toBe(null)
+  expect(store.get()).toEqual(value)
+})
 
-    return test(store, null)
-  },
-  (id) => {
-    const value = {
-      foo: 'bar',
-      baz: 1,
-      qux: true,
-      quux: [1, 2, 3]
-    }
+test('array', () => {
+  const value = ['value1', 'value2', 'value3']
 
-    const guard = scanner({
-      foo: string,
-      baz: number,
-      qux: boolean,
-      quux: array(number)
-    })
+  const store = typedStorage('array', {
+    guard: (x: unknown): x is string[] =>
+      Array.isArray(x) && x.every((y) => typeof y === 'string'),
+    defaultValue: []
+  })
 
-    const store = typedStorage(id, {
-      guard
-    })
+  store.remove()
 
-    return test(store, value)
-  },
-  (id) => {
-    const value = ['value1', 'value2', 'value3']
-
-    const store = typedStorage(id, {
-      guard: (x: unknown): x is string[] =>
-        Array.isArray(x) && x.every((y) => typeof y === 'string'),
-      defaultValue: []
-    })
-
-    return test(store, value, [])
-  }
-]
+  expect(store.get()).toEqual([])
+  expect(store.set(value)).toBe(null)
+  expect(store.get()).toEqual(value)
+})
