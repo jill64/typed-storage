@@ -1,2 +1,2 @@
-export { passThrough } from './serializer/passThrough'
-export { typedStorage } from './typedStorage'
+export { passThrough } from './serializer/passThrough.js'
+export { typedStorage } from './typedStorage.js'
