@@ -7,7 +7,7 @@ type TypedStorage = {
     options: {
       guard: (value: unknown) => value is T
       defaultValue: T
-      transformer?: Serializer<T>
+      serializer?: Serializer<T>
     }
   ): {
     get: () => T
@@ -19,7 +19,7 @@ type TypedStorage = {
     options: {
       guard: (value: unknown) => value is T
       defaultValue?: T
-      transformer?: Serializer<T>
+      serializer?: Serializer<T>
     }
   ): {
     get: () => T | undefined
@@ -34,7 +34,7 @@ export const typedStorage: TypedStorage = (key, options) => {
   const available = () =>
     typeof window !== 'undefined' && typeof localStorage !== 'undefined'
 
-  const transformer = options.transformer ?? {
+  const serializer = options.serializer ?? {
     parse: (value: string) => JSON.parse(value),
     stringify: (value: unknown) => JSON.stringify(value)
   }
@@ -51,7 +51,7 @@ export const typedStorage: TypedStorage = (key, options) => {
         return defaultValue
       }
 
-      const obj = attempt(() => transformer.parse(str))
+      const obj = attempt(() => serializer.parse(str))
 
       if (!guard(obj)) {
         return defaultValue
@@ -60,7 +60,7 @@ export const typedStorage: TypedStorage = (key, options) => {
       return obj
     },
     set: (value) => {
-      const str = attempt(() => transformer.stringify(value))
+      const str = attempt(() => serializer.stringify(value))
 
       if (str instanceof Error) {
         return str

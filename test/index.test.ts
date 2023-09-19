@@ -13,7 +13,7 @@ import { typedStorage } from '../src/index'
 test('string', () => {
   const store = typedStorage('string', {
     guard: isString,
-    transformer: { parse: (x) => x, stringify: (x) => x }
+    serializer: { parse: (x) => x, stringify: (x) => x }
   })
 
   store.remove()
@@ -85,7 +85,7 @@ test('invalid transformer', () => {
 
   const store = typedStorage('invalid-transformer', {
     guard: isString,
-    transformer: {
+    serializer: {
       parse: () => {
         throw new Error('parse error')
       },
