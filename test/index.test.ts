@@ -8,12 +8,12 @@ import {
   string
 } from 'typescanner'
 import { expect, test } from 'vitest'
-import { typedStorage } from '../src/index'
+import { passThrough, typedStorage } from '../src/index'
 
 test('string', () => {
   const store = typedStorage('string', {
     guard: isString,
-    serializer: { parse: (x) => x, stringify: (x) => x }
+    serializer: passThrough
   })
 
   store.remove()
