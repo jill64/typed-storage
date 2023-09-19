@@ -1,4 +1,4 @@
-import { Serializer } from '../types/Serializer'
+import { Serializer } from '../types/Serializer.js'
 
 export const passThrough: Serializer<string> = {
   parse: (x) => x,

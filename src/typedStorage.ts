@@ -1,5 +1,5 @@
 import { attempt } from '@jill64/attempt'
-import { Serializer } from './types/Serializer'
+import type { Serializer } from './types/Serializer.js'
 
 type TypedStorage = {
   <T>(

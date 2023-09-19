@@ -6,8 +6,9 @@
     "strict": true,
     "declaration": true,
     "lib": ["ESNext", "DOM"],
-    "module": "ESNext",
-    "moduleResolution": "Node"
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext"
   },
   "include": ["src"]
 }
