@@ -13,7 +13,7 @@ npm i -D @jill64/typed-storage
 
 ## Example
 
-```js
+```ts
 const key = 'localStorageKey'
 const value = ['value1', 'value2', 'value3']
 
@@ -34,8 +34,4 @@ const storedValue = store.get()
 
 ## Options
 
-| Name         | Type                                                       | Description                                                                  |
-| ------------ | ---------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| guard        | `(x: unknown): x is T => boolean`                          | A type guard function to use when retrieving values from storage             |
-| defaultValue | `T `                                                       | Default value when there is no value in storage (default: `undefined`)       |
-| transformer  | `{ parse: (x: string) => T, stringify: (x: T) => string }` | Conversion function when getting/setting values in storage (default: `JSON`) |
+See [src/types/Options.ts](src/types/Options.ts)
