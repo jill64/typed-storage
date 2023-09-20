@@ -23,7 +23,7 @@ devDependencies:
     specifier: 8.49.0
     version: 8.49.0
   happy-dom:
-    specifier: ^12.1.2
+    specifier: 12.1.2
     version: 12.1.2
   prettier:
     specifier: 3.0.3
