@@ -3,6 +3,6 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   test: {
     includeSource: ['./**/*.{js,ts}'],
-    environment: 'jsdom'
+    environment: 'happy-dom'
   }
 })

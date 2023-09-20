@@ -118,3 +118,31 @@ test('unavailable storage', () => {
   expect(store.set(value)).toBe(null)
   expect(store.get()).toBe(undefined)
 })
+
+test('session storage test', () => {
+  const value = {
+    foo: 'bar',
+    baz: 1,
+    qux: true,
+    quux: [1, 2, 3]
+  }
+
+  const guard = scanner({
+    foo: string,
+    baz: number,
+    qux: boolean,
+    quux: array(number)
+  })
+
+  const store = typedStorage('session-storage-test', {
+    guard,
+    sessionStorage: true,
+    defaultValue: null
+  })
+
+  store.remove()
+
+  expect(store.get()).toBe(null)
+  expect(store.set(value)).toBe(null)
+  expect(store.get()).toEqual(null)
+})

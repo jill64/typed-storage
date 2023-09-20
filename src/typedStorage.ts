@@ -1,14 +1,10 @@
 import { attempt } from '@jill64/attempt'
-import type { Serializer } from './types/Serializer.js'
+import { Options } from './types/Options.js'
 
 type TypedStorage = {
   <T>(
     key: string,
-    options: {
-      guard: (value: unknown) => value is T
-      defaultValue: T
-      serializer?: Serializer<T>
-    }
+    options: Options<T> & Required<Pick<Options<T>, 'defaultValue'>>
   ): {
     get: () => T
     set: (value: T) => Error | null
@@ -16,11 +12,7 @@ type TypedStorage = {
   }
   <T>(
     key: string,
-    options: {
-      guard: (value: unknown) => value is T
-      defaultValue?: T
-      serializer?: Serializer<T>
-    }
+    options: Options<T>
   ): {
     get: () => T | undefined
     set: (value: T) => Error | null
@@ -31,8 +23,10 @@ type TypedStorage = {
 export const typedStorage: TypedStorage = (key, options) => {
   const { guard, defaultValue } = options
 
+  const storage = options.sessionStorage ? sessionStorage : localStorage
+
   const available = () =>
-    typeof window !== 'undefined' && typeof localStorage !== 'undefined'
+    typeof window !== 'undefined' && typeof storage !== 'undefined'
 
   const serializer = options.serializer ?? {
     parse: (value: string) => JSON.parse(value),
@@ -45,7 +39,7 @@ export const typedStorage: TypedStorage = (key, options) => {
         return defaultValue
       }
 
-      const str = localStorage.getItem(key)
+      const str = storage.getItem(key)
 
       if (!str) {
         return defaultValue
@@ -67,14 +61,14 @@ export const typedStorage: TypedStorage = (key, options) => {
       }
 
       if (available()) {
-        localStorage.setItem(key, str)
+        storage.setItem(key, str)
       }
 
       return null
     },
     remove: () => {
       if (available()) {
-        localStorage.removeItem(key)
+        storage.removeItem(key)
       }
     }
   }
