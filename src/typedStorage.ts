@@ -1,15 +1,10 @@
 import { attempt } from '@jill64/attempt'
-import type { Serializer } from './types/Serializer.js'
+import { Options } from './types/Options.js'
 
 type TypedStorage = {
   <T>(
     key: string,
-    options: {
-      guard: (value: unknown) => value is T
-      defaultValue: T
-      serializer?: Serializer<T>
-      sessionStorage?: boolean
-    }
+    options: Options<T> & Required<Pick<Options<T>, 'defaultValue'>>
   ): {
     get: () => T
     set: (value: T) => Error | null
@@ -17,12 +12,7 @@ type TypedStorage = {
   }
   <T>(
     key: string,
-    options: {
-      guard: (value: unknown) => value is T
-      defaultValue?: T
-      serializer?: Serializer<T>
-      sessionStorage?: boolean
-    }
+    options: Options<T>
   ): {
     get: () => T | undefined
     set: (value: T) => Error | null
