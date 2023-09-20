@@ -117,10 +117,41 @@ test('unavailable storage', () => {
   expect(store.get()).toBe(undefined)
   expect(store.set(value)).toBe(null)
   expect(store.get()).toBe(undefined)
-})
 
-test('session storage test', () => {
-  const value = {
+  // eslint-disable-next-line no-global-assign
+  window = {} as unknown as Window & typeof globalThis
+
+  const localStore = typedStorage('unavailable-storage', {
+    guard: isString
+  })
+
+  localStore.remove()
+
+  expect(localStore.get()).toBe(undefined)
+  expect(localStore.set(value)).toBe(null)
+  expect(localStore.get()).toBe(undefined)
+
+  const sessionStore = typedStorage('unavailable-session-storage', {
+    guard: isString,
+    sessionStorage: true
+  })
+
+  sessionStore.remove()
+
+  expect(sessionStore.get()).toBe(undefined)
+  expect(sessionStore.set(value)).toBe(null)
+  expect(sessionStore.get()).toBe(undefined)
+
+  // eslint-disable-next-line no-global-assign
+  window = {
+    sessionStorage: {
+      getItem: () => null,
+      setItem: () => null,
+      removeItem: () => null
+    }
+  } as unknown as Window & typeof globalThis
+
+  const obj = {
     foo: 'bar',
     baz: 1,
     qux: true,
@@ -134,15 +165,15 @@ test('session storage test', () => {
     quux: array(number)
   })
 
-  const store = typedStorage('session-storage-test', {
+  const objStore = typedStorage('session-storage-test', {
     guard,
     sessionStorage: true,
     defaultValue: null
   })
 
-  store.remove()
+  objStore.remove()
 
-  expect(store.get()).toBe(null)
-  expect(store.set(value)).toBe(null)
-  expect(store.get()).toEqual(null)
+  expect(objStore.get()).toBe(null)
+  expect(objStore.set(obj)).toBe(null)
+  expect(objStore.get()).toEqual(obj)
 })
