@@ -23,10 +23,19 @@ type TypedStorage = {
 export const typedStorage: TypedStorage = (key, options) => {
   const { guard, defaultValue } = options
 
-  const storage = options.sessionStorage ? sessionStorage : localStorage
+  const storage = () => {
+    if (typeof window === 'undefined') {
+      return null
+    }
 
-  const available = () =>
-    typeof window !== 'undefined' && typeof storage !== 'undefined'
+    if (options.sessionStorage) {
+      return typeof window.sessionStorage !== 'undefined'
+        ? sessionStorage
+        : null
+    }
+
+    return typeof window.localStorage !== 'undefined' ? localStorage : null
+  }
 
   const serializer = options.serializer ?? {
     parse: (value: string) => JSON.parse(value),
@@ -35,11 +44,7 @@ export const typedStorage: TypedStorage = (key, options) => {
 
   return {
     get: () => {
-      if (!available()) {
-        return defaultValue
-      }
-
-      const str = storage.getItem(key)
+      const str = storage()?.getItem(key)
 
       if (!str) {
         return defaultValue
@@ -60,16 +65,12 @@ export const typedStorage: TypedStorage = (key, options) => {
         return str
       }
 
-      if (available()) {
-        storage.setItem(key, str)
-      }
+      storage()?.setItem(key, str)
 
       return null
     },
     remove: () => {
-      if (available()) {
-        storage.removeItem(key)
-      }
+      storage()?.removeItem(key)
     }
   }
 }
