@@ -4,8 +4,8 @@ on: push
 
 jobs:
   lint:
-    uses: jill64/reusable-workflow/.github/workflows/lint.yml@main
+    uses: jill64/workflows/.github/workflows/lint.yml@main
   build:
-    uses: jill64/reusable-workflow/.github/workflows/build.yml@main
+    uses: jill64/workflows/.github/workflows/build.yml@main
   coverage:
-    uses: jill64/reusable-workflow/.github/workflows/coverage.yml@main
+    uses: jill64/workflows/.github/workflows/coverage.yml@main
