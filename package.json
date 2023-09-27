@@ -1,6 +1,6 @@
 {
   "name": "@jill64/typed-storage",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "type": "module",
   "description": "Type-safe localStorage wrapper",
   "main": "dist/index.js",
