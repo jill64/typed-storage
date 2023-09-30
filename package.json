@@ -1,6 +1,6 @@
 {
   "name": "@jill64/typed-storage",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "type": "module",
   "description": "Type-safe localStorage wrapper",
   "main": "dist/index.js",
@@ -38,7 +38,7 @@
     "@typescript-eslint/parser": "6.7.3",
     "@vitest/coverage-v8": "0.34.6",
     "eslint": "8.50.0",
-    "happy-dom": "12.2.2",
+    "happy-dom": "12.4.0",
     "prettier": "3.0.3",
     "publint": "0.2.3",
     "typescanner": "0.5.3",
