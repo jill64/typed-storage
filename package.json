@@ -40,7 +40,7 @@
     "eslint": "8.50.0",
     "happy-dom": "12.9.0",
     "prettier": "3.0.3",
-    "publint": "0.2.3",
+    "publint": "0.2.4",
     "typescanner": "0.5.3",
     "typescript": "5.2.2",
     "vitest": "0.34.6"
