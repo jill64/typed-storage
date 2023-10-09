@@ -1,6 +1,6 @@
 {
   "name": "@jill64/typed-storage",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "type": "module",
   "description": "Type-safe localStorage wrapper",
   "main": "dist/index.js",
@@ -28,19 +28,16 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc && publint",
+    "build": "tsc && npx publint",
     "test": "vitest run --coverage",
-    "format": "prettier --write .",
-    "lint": "prettier --check . && eslint ."
+    "format": "npx prettier --write .",
+    "lint": "npx prettier --check . && npx eslint"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "6.7.4",
     "@typescript-eslint/parser": "6.7.4",
     "@vitest/coverage-v8": "0.34.6",
-    "eslint": "8.50.0",
     "happy-dom": "12.9.0",
-    "prettier": "3.0.3",
-    "publint": "0.2.3",
     "typescanner": "0.5.3",
     "typescript": "5.2.2",
     "vitest": "0.34.6"
