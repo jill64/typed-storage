@@ -1,6 +1,6 @@
 {
   "name": "@jill64/typed-storage",
-  "version": "0.3.16",
+  "version": "0.3.17",
   "type": "module",
   "description": "Type-safe localStorage wrapper",
   "main": "dist/index.js",
@@ -30,6 +30,7 @@
   "scripts": {
     "build": "tsc && npx publint",
     "test": "vitest run --coverage",
+    "prepack": "npm run build",
     "format": "npx prettier --write .",
     "lint": "npx prettier --check . && npx eslint"
   },
