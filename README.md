@@ -1,6 +1,7 @@
 # typed-storage
 
-![github-actions-ci](https://github.com/jill64/typed-storage/actions/workflows/ci.yml/badge.svg)
+[![npm](https://img.shields.io/npm/v/%40jill64%2Ftyped-storage)](https://npmjs.com/package/@jill64/typed-storage)
+[![CI](https://github.com/jill64/typed-storage/actions/workflows/ci.yml/badge.svg)](https://github.com/jill64/typed-storage/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/github/jill64/typed-storage/graph/badge.svg?token=6S1ZY4QIPS)](https://codecov.io/github/jill64/typed-storage)
 
 Type-safe localStorage wrapper
