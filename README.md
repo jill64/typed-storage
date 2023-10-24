@@ -1,9 +1,12 @@
+<!----- BEGIN GHOST DOCS HEADER ----->
+
 # typed-storage
 
-[![npm](https://img.shields.io/npm/v/%40jill64%2Ftyped-storage)](https://npmjs.com/package/@jill64/typed-storage)
-[![codecov](https://codecov.io/github/jill64/typed-storage/graph/badge.svg?token=6S1ZY4QIPS)](https://codecov.io/github/jill64/typed-storage)
+[![npm-version](https://img.shields.io/npm/v/@jill64/typed-storage)](https://npmjs.com/package/@jill64/typed-storage) [![npm-license](https://img.shields.io/npm/l/@jill64/typed-storage)](https://npmjs.com/package/@jill64/typed-storage) [![npm-download-month](https://img.shields.io/npm/dm/@jill64/typed-storage)](https://npmjs.com/package/@jill64/typed-storage) [![npm-min-size](https://img.shields.io/bundlephobia/min/@jill64/typed-storage)](https://npmjs.com/package/@jill64/typed-storage) [![codecov-coverage](https://codecov.io/gh/jill64/typed-storage/graph/badge.svg)](https://codecov.io/gh/jill64/typed-storage)
 
 Type-safe localStorage wrapper
+
+<!----- END GHOST DOCS HEADER ----->
 
 ## Install
 
