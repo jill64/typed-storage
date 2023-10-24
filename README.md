@@ -1,9 +1,5 @@
-# typed-storage
-
-[![npm](https://img.shields.io/npm/v/%40jill64%2Ftyped-storage)](https://npmjs.com/package/@jill64/typed-storage)
-[![codecov](https://codecov.io/github/jill64/typed-storage/graph/badge.svg?token=6S1ZY4QIPS)](https://codecov.io/github/jill64/typed-storage)
-
-Type-safe localStorage wrapper
+<!----- BEGIN GHOST DOCS HEADER ----->
+<!----- END GHOST DOCS HEADER ----->
 
 ## Install
 
