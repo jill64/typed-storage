@@ -45,6 +45,6 @@
     "vitest": "0.34.6"
   },
   "dependencies": {
-    "@jill64/attempt": "^1.0.0"
+    "@jill64/attempt": "1.1.0"
   }
 }
