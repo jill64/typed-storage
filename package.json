@@ -41,7 +41,7 @@
     "@typescript-eslint/eslint-plugin": "6.9.0",
     "@typescript-eslint/parser": "6.9.0",
     "eslint-plugin-deprecation": "2.0.0",
-    "happy-dom": "12.9.1",
+    "happy-dom": "12.10.1",
     "typescanner": "0.5.3",
     "typescript": "5.2.2",
     "vitest": "0.34.6"
