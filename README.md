@@ -8,12 +8,6 @@ Type-safe localStorage wrapper
 
 <!----- END GHOST DOCS HEADER ----->
 
-## Install
-
-```sh
-npm i -D @jill64/typed-storage
-```
-
 ## Example
 
 ```ts
