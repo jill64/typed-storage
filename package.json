@@ -9,7 +9,9 @@
   "bugs": "https://github.com/jill64/typed-storage/issues",
   "homepage": "https://github.com/jill64/typed-storage#readme",
   "files": [
-    "dist"
+    "dist",
+    "!*.test.*",
+    "!*.spec.*"
   ],
   "exports": {
     ".": {
@@ -18,10 +20,9 @@
     }
   },
   "keywords": [
-    "type-safe",
-    "local-storage",
-    "session-storage",
-    "browser"
+    "localstorage",
+    "sessionstorage",
+    "utility"
   ],
   "repository": {
     "type": "git",
