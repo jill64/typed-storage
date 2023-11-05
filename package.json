@@ -22,6 +22,7 @@
   "keywords": [
     "localstorage",
     "sessionstorage",
+    "type-safe",
     "utility"
   ],
   "repository": {
