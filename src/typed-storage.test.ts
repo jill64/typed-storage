@@ -8,7 +8,7 @@ import {
   string
 } from 'typescanner'
 import { expect, test } from 'vitest'
-import { passThrough, typedStorage } from '../src/index'
+import { passThrough, typedStorage } from './index.js'
 
 test('string', () => {
   const store = typedStorage('string', {
