@@ -1,38 +1,17 @@
-import {
-  array,
-  boolean,
-  isNull,
-  isString,
-  number,
-  scanner,
-  string
-} from 'typescanner'
+import { devalue, json } from 'ts-serde/object'
+import { string as serdeString } from 'ts-serde/primitive'
+import { array, boolean, number, scanner, string } from 'typescanner'
 import { expect, test } from 'vitest'
-import { passThrough, typedStorage } from './index.js'
+import { typedStorage } from './typed-storage.js'
 
 test('string', () => {
-  const store = typedStorage('string', {
-    guard: isString,
-    serializer: passThrough
-  })
+  const store = typedStorage('string')
 
-  store.remove()
+  expect(store.get()).toBe('')
 
-  expect(store.get()).toBe(undefined)
-  expect(store.set('value')).toBe(null)
+  store.set('value')
+
   expect(store.get()).toBe('value')
-})
-
-test('null', () => {
-  const store = typedStorage('null', {
-    guard: isNull
-  })
-
-  store.remove()
-
-  expect(store.get()).toBe(undefined)
-  expect(store.set(null)).toBe(null)
-  expect(store.get()).toBe(null)
 })
 
 test('object', () => {
@@ -50,97 +29,69 @@ test('object', () => {
     quux: array(number)
   })
 
-  const store = typedStorage('object', {
-    guard
-  })
+  const store = typedStorage('object', json(guard, null))
 
-  store.remove()
+  expect(store.get()).toBe(null)
 
-  expect(store.get()).toBe(undefined)
-  expect(store.set(value)).toBe(null)
+  store.set(value)
+
+  expect(store.get()).toEqual(value)
 
   localStorage.setItem('object', JSON.stringify({ foo: 'bar' }))
 
-  expect(store.get()).toEqual(undefined)
+  expect(store.get()).toEqual(null)
 })
 
 test('array', () => {
   const value = ['value1', 'value2', 'value3']
 
-  const store = typedStorage('array', {
-    guard: (x: unknown): x is string[] =>
-      Array.isArray(x) && x.every((y) => typeof y === 'string'),
-    defaultValue: []
-  })
+  const guard = (x: unknown): x is string[] =>
+    Array.isArray(x) && x.every((y) => typeof y === 'string')
 
-  store.remove()
+  const store = typedStorage('array', devalue(guard, []))
 
   expect(store.get()).toEqual([])
-  expect(store.set(value)).toBe(null)
+
+  store.set(value)
+
   expect(store.get()).toEqual(value)
 })
 
-test('invalid transformer', () => {
-  const value = 'value'
-
-  const store = typedStorage('invalid-transformer', {
-    guard: isString,
-    serializer: {
-      parse: () => {
-        throw new Error('parse error')
-      },
-      stringify: () => {
-        throw new Error('stringify error')
-      }
-    }
-  })
-
-  store.remove()
-
-  expect(store.get()).toEqual(undefined)
-  expect(store.set(value)).toBeInstanceOf(Error)
-  expect(store.get()).toEqual(undefined)
-})
-
-test('unavailable storage', () => {
+test('unavailable typedStorage', () => {
   // eslint-disable-next-line no-global-assign
   window = undefined as unknown as Window & typeof globalThis
 
   const value = 'value'
 
-  const store = typedStorage('unavailable-storage', {
-    guard: isString
-  })
+  const store = typedStorage('unavailable-typedStorage', serdeString)
 
-  store.remove()
+  expect(store.get()).toBe('')
 
-  expect(store.get()).toBe(undefined)
-  expect(store.set(value)).toBe(null)
-  expect(store.get()).toBe(undefined)
+  store.set(value)
 
-  // eslint-disable-next-line no-global-assign
-  window = {} as unknown as Window & typeof globalThis
+  expect(store.get()).toBe('')
 
-  const localStore = typedStorage('unavailable-storage', {
-    guard: isString
-  })
+  const localStore = typedStorage('unavailable-typedStorage')
 
-  localStore.remove()
+  expect(localStore.get()).toBe('')
 
-  expect(localStore.get()).toBe(undefined)
-  expect(localStore.set(value)).toBe(null)
-  expect(localStore.get()).toBe(undefined)
+  localStore.set(value)
 
-  const sessionStore = typedStorage('unavailable-session-storage', {
-    guard: isString,
-    sessionStorage: true
-  })
+  expect(localStore.get()).toBe('')
 
-  sessionStore.remove()
+  const sessionStore = typedStorage(
+    'unavailable-session-typedStorage',
+    serdeString,
+    {
+      sessionStorage: true
+    }
+  )
 
-  expect(sessionStore.get()).toBe(undefined)
-  expect(sessionStore.set(value)).toBe(null)
-  expect(sessionStore.get()).toBe(undefined)
+  expect(sessionStore.get()).toBe('')
+
+  sessionStore.set(value)
+
+  expect(sessionStore.get()).toBe('')
 
   // eslint-disable-next-line no-global-assign
   window = {
@@ -165,15 +116,17 @@ test('unavailable storage', () => {
     quux: array(number)
   })
 
-  const objStore = typedStorage('session-storage-test', {
-    guard,
-    sessionStorage: true,
-    defaultValue: null
-  })
-
-  objStore.remove()
+  const objStore = typedStorage(
+    'session-typedStorage-test',
+    json(guard, null),
+    {
+      sessionStorage: true
+    }
+  )
 
   expect(objStore.get()).toBe(null)
-  expect(objStore.set(obj)).toBe(null)
+
+  objStore.set(obj)
+
   expect(objStore.get()).toEqual(obj)
 })
