@@ -2,7 +2,7 @@
   "name": "@jill64/typed-storage",
   "version": "2.0.0",
   "type": "module",
-  "description": "🗃️ Type-safe localStorage wrapper",
+  "description": "🗃️ Type-Safe Universal Persistent Storage",
   "main": "dist/index.js",
   "license": "MIT",
   "author": "jill64 <intents.turrets0h@icloud.com> (https://github.com/jill64)",
