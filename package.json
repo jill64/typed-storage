@@ -1,8 +1,8 @@
 {
   "name": "@jill64/typed-storage",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
-  "description": "🗃️ Type-Safe Universal Persistent Storage",
+  "description": "🗃️ Type-Safe Web Storage API Wrapper",
   "main": "dist/index.js",
   "license": "MIT",
   "author": "jill64 <intents.turrets0h@icloud.com> (https://github.com/jill64)",
