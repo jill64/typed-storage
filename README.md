@@ -17,24 +17,31 @@ npm i @jill64/typed-storage
 ## Example
 
 ```ts
+import { typedStorage } from '@jill64/typed-storage'
+import { json } from '@jill64/typed-storage/serde'
+
 const key = 'localStorageKey'
 const value = ['value1', 'value2', 'value3']
 
-const store = typedStorage(key, {
-  guard: (x: unknown): x is string[] =>
-    Array.isArray(x) && x.every((y) => typeof y === 'string')
+const guard = (x: unknown): x is string[] =>
+  Array.isArray(x) && x.every((y) => typeof y === 'string')
+
+const store = typedStorage(key, json(guard, []), {
+  // Optional
+  // Use sessionStorage
+  // sessionStorage?: boolean
 })
 
-// Remove value from local storage
-store.remove()
-
-// Error | null
-const result = store.set(value)
-
-// string[] | undefined
+// string[]
 const storedValue = store.get()
+
+store.set(value)
+
+const unsubscriber = store.subscribe((newValue) => {
+  // called when localStorage value changes
+  console.log(newValue)
+})
+
+// unsubscribe
+unsubscriber()
 ```
-
-## Options
-
-See [src/types/Options.ts](src/types/Options.ts)
