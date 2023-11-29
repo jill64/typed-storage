@@ -2,7 +2,7 @@ export const init = () => {
   /** <key, <id, sub>> */
   const map = new Map<string, Map<string, (event: StorageEvent) => unknown>>()
 
-  if (typeof window === 'undefined') {
+  if (typeof window !== 'undefined') {
     addEventListener('storage', (event) => {
       const { key } = event
       if (key) {
