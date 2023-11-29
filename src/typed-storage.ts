@@ -1,76 +1,36 @@
-import { attempt } from '@jill64/attempt'
+import { init } from './init.js'
+import { Serde, string } from './serde/index.js'
 import { Options } from './types/Options.js'
+import { TypedStorage } from './types/TypedStorage.js'
 
-type TypedStorage = {
-  <T>(
-    key: string,
-    options: Options<T> & Required<Pick<Options<T>, 'defaultValue'>>
-  ): {
-    get: () => T
-    set: (value: T) => Error | null
-    remove: () => void
-  }
-  <T>(
-    key: string,
-    options: Options<T>
-  ): {
-    get: () => T | undefined
-    set: (value: T) => Error | null
-    remove: () => void
-  }
-}
+const addListener = init()
 
-export const typedStorage: TypedStorage = (key, options) => {
-  const { guard, defaultValue } = options
+export const typedStorage: {
+  <T>(key: string, serde: Serde<T>, options?: Options): TypedStorage<T>
+  (key: string, options?: Options): TypedStorage<string>
+} = <T>(
+  key: string,
+  arg?: Serde<T> | Options,
+  opts?: Options
+): TypedStorage<T> => {
+  const isCustomSerde = arg && 'serialize' in arg && 'deserialize' in arg
+  const { serialize, deserialize } = (isCustomSerde ? arg : string) as Serde<T>
+  const options = isCustomSerde ? opts : arg
 
-  const storage = () => {
-    if (typeof window === 'undefined') {
-      return null
-    }
-
-    if (options.sessionStorage) {
-      return typeof window.sessionStorage !== 'undefined'
+  const storage =
+    typeof window !== 'undefined'
+      ? options?.sessionStorage
         ? sessionStorage
-        : null
-    }
-
-    return typeof window.localStorage !== 'undefined' ? localStorage : null
-  }
-
-  const serializer = options.serializer ?? {
-    parse: (value: string) => JSON.parse(value),
-    stringify: (value: unknown) => JSON.stringify(value)
-  }
+        : localStorage
+      : null
 
   return {
-    get: () => {
-      const str = storage()?.getItem(key)
-
-      if (!str) {
-        return defaultValue
-      }
-
-      const obj = attempt(() => serializer.parse(str))
-
-      if (!guard(obj)) {
-        return defaultValue
-      }
-
-      return obj
+    get: () => deserialize(storage?.getItem(key) ?? ''),
+    set: (value: T) => {
+      const str = serialize(value)
+      storage?.setItem(key, str)
     },
-    set: (value) => {
-      const str = attempt(() => serializer.stringify(value))
-
-      if (str instanceof Error) {
-        return str
-      }
-
-      storage()?.setItem(key, str)
-
-      return null
-    },
-    remove: () => {
-      storage()?.removeItem(key)
-    }
+    subscribe: (callback) =>
+      addListener(key, ({ newValue }) => callback(deserialize(newValue ?? '')))
   }
 }
