@@ -1,5 +1,6 @@
 import { init } from './init.js'
-import { Serde, string } from './serde/index.js'
+import { Serde } from 'ts-serde'
+import { string } from 'ts-serde/primitive'
 import { Options } from './types/Options.js'
 import { TypedStorage } from './types/TypedStorage.js'
 

@@ -6,12 +6,6 @@
 
 🗃️ Type-Safe Web Storage API Wrapper
 
-## Installation
-
-```sh
-npm i @jill64/typed-storage
-```
-
 <!----- END GHOST DOCS HEADER ----->
 
 ## Example
