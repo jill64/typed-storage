@@ -1,8 +1,7 @@
-import { devalue, json } from 'ts-serde/object'
-import { string as serdeString } from 'ts-serde/primitive'
 import { array, boolean, number, scanner, string } from 'typescanner'
 import { expect, test } from 'vitest'
-import { typedStorage } from './typed-storage.js'
+import { devalue, json, string as serdeString } from '../src/serde/index.js'
+import { typedStorage } from '../src/typed-storage.js'
 
 test('string', () => {
   const store = typedStorage('string')
