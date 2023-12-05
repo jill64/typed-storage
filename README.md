@@ -8,6 +8,12 @@
 
 <!----- END GHOST DOCS HEADER ----->
 
+## Installation
+
+```sh
+npm i @jill64/typed-storage
+```
+
 ## Example
 
 ```ts
