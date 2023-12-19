@@ -45,3 +45,11 @@ const unsubscriber = store.subscribe((newValue) => {
 // unsubscribe
 unsubscriber()
 ```
+
+<!----- BEGIN GHOST DOCS FOOTER ----->
+
+## License
+
+MIT
+
+<!----- END GHOST DOCS FOOTER ----->
