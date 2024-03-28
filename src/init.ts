@@ -1,5 +1,3 @@
-import { nanoid } from 'nanoid'
-
 export const init = () => {
   /** <key, <id, sub>> */
   const map = new Map<string, Map<string, (event: StorageEvent) => unknown>>()
@@ -15,7 +13,7 @@ export const init = () => {
 
   return (key: string, sub: (event: StorageEvent) => unknown) => {
     const subs = map.get(key)
-    const id = nanoid()
+    const id = Math.random().toString(36).slice(2)
 
     if (subs) {
       subs.set(id, sub)
