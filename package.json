@@ -62,7 +62,6 @@
     "vitest": "1.4.0"
   },
   "dependencies": {
-    "nanoid": "5.0.6",
     "ts-serde": "1.0.3"
   }
 }
