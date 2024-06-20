@@ -1,6 +1,6 @@
 {
   "name": "@jill64/typed-storage",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "type": "module",
   "description": "🗃️ Type-Safe Web Storage API Wrapper",
   "main": "dist/index.js",
@@ -40,7 +40,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jill64/typed-storage.git",
-    "image": "https://opengraph.githubassets.com/204b7b5689962f86e155564f3b158e348a85e7c7b6c80e49cb6e467e4223a5ea/jill64/typed-storage"
+    "image": "https://opengraph.githubassets.com/710aa4781a5547f6179ac38ecde31067939b7c835fc076299e6d59f7e272f9e4/jill64/typed-storage"
   },
   "publishConfig": {
     "access": "public"
@@ -56,7 +56,7 @@
   "devDependencies": {
     "@jill64/eslint-config-ts": "1.1.26",
     "@jill64/prettier-config": "1.0.0",
-    "happy-dom": "14.12.0",
+    "happy-dom": "14.12.3",
     "typescanner": "0.5.3",
     "typescript": "5.4.5",
     "vitest": "1.6.0"
