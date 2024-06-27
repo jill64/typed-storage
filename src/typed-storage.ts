@@ -1,6 +1,6 @@
-import { init } from './init.js'
 import { Serde } from 'ts-serde'
 import { string } from 'ts-serde/primitive'
+import { init } from './init.js'
 import { Options } from './types/Options.js'
 import { TypedStorage } from './types/TypedStorage.js'
 
@@ -32,6 +32,15 @@ export const typedStorage: {
       storage?.setItem(key, str)
     },
     subscribe: (callback) =>
-      addListener(key, ({ newValue }) => callback(deserialize(newValue ?? '')))
+      addListener(key, ({ newValue }) => callback(deserialize(newValue ?? ''))),
+    addListener: (callback) => {
+      if (typeof window !== 'undefined') {
+        addEventListener('storage', (event) => {
+          if (event.key === key) {
+            callback(deserialize(event.key))
+          }
+        })
+      }
+    }
   }
 }
