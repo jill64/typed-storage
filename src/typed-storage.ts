@@ -40,7 +40,9 @@ export const typedStorage: {
       }
 
       return () => {
-        removeEventListener('storage', listener)
+        if (typeof window !== 'undefined') {
+          removeEventListener('storage', listener)
+        }
       }
     }
   }
