@@ -37,7 +37,7 @@ export const typedStorage: {
       if (typeof window !== 'undefined') {
         addEventListener('storage', (event) => {
           if (event.key === key) {
-            callback(deserialize(event.key))
+            callback(event)
           }
         })
       }

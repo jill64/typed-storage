@@ -1,6 +1,6 @@
 {
   "name": "@jill64/typed-storage",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "type": "module",
   "description": "🗃️ Type-Safe Web Storage API Wrapper",
   "main": "dist/index.js",
@@ -40,7 +40,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jill64/typed-storage.git",
-    "image": "https://opengraph.githubassets.com/4d79b5bf22c50a5e9f1616762aafbde96e802683776b5cadc8274b70422f1ba2/jill64/typed-storage"
+    "image": "https://opengraph.githubassets.com/c4a25b0150cae081c98ebb51e055bf3cb8e46f6770ac839c0fa88edceb42b65f/jill64/typed-storage"
   },
   "publishConfig": {
     "access": "public"
