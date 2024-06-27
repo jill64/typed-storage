@@ -29,12 +29,18 @@ export const typedStorage: {
       storage?.setItem(key, str)
     },
     addListener: (callback) => {
+      const listener = (event: StorageEvent) => {
+        if (event.key === key) {
+          callback(event)
+        }
+      }
+
       if (typeof window !== 'undefined') {
-        addEventListener('storage', (event) => {
-          if (event.key === key) {
-            callback(event)
-          }
-        })
+        addEventListener('storage', listener)
+      }
+
+      return () => {
+        removeEventListener('storage', listener)
       }
     }
   }
