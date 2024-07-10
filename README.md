@@ -20,6 +20,8 @@ npm i @jill64/typed-storage
 
 ## Example
 
+See [ts-serde](https://github.com/jill64/ts-serde#readme) for more information on type guard
+
 ```ts
 import { typedStorage } from '@jill64/typed-storage'
 import { json } from '@jill64/typed-storage/serde'
