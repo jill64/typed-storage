@@ -40,7 +40,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jill64/typed-storage.git",
-    "image": "https://opengraph.githubassets.com/2025fb91bd07b501c7afa63742c9b55bb8567f7a944399fef33028df19cefc4e/jill64/typed-storage"
+    "image": "https://opengraph.githubassets.com/7736a4676b1f1615ffa220486cf412a38f20ce9023cd53c54056937f7c10eeaa/jill64/typed-storage"
   },
   "publishConfig": {
     "access": "public"
@@ -59,7 +59,7 @@
     "happy-dom": "14.12.3",
     "typescanner": "0.5.3",
     "typescript": "5.5.4",
-    "vitest": "2.0.4"
+    "vitest": "2.0.5"
   },
   "dependencies": {
     "ts-serde": "1.0.7"
