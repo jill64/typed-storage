@@ -40,7 +40,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jill64/typed-storage.git",
-    "image": "https://opengraph.githubassets.com/99fc3b1330675ea26d333123cdcdaaaedac82aa6ec5d3c2778c3a7d924a8393c/jill64/typed-storage"
+    "image": "https://opengraph.githubassets.com/855bfe3dc89f9f5f7e0d397a1b4d258c48f2b38b5afaa28b9e1067ef52be90d4/jill64/typed-storage"
   },
   "publishConfig": {
     "access": "public"
