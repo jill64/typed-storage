@@ -59,7 +59,7 @@
     "happy-dom": "15.10.2",
     "typescanner": "0.5.3",
     "typescript": "5.7.2",
-    "vitest": "2.1.5"
+    "vitest": "2.1.6"
   },
   "dependencies": {
     "ts-serde": "1.0.8"
