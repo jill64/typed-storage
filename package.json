@@ -32,6 +32,7 @@
     }
   },
   "keywords": [
+    "library",
     "localstorage",
     "sessionstorage",
     "type-safe",
@@ -40,7 +41,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jill64/typed-storage.git",
-    "image": "https://opengraph.githubassets.com/b67d95f24f3cd770ff4b43b93a2c93348cd73e98a0cc108b16cd00478da0471e/jill64/typed-storage"
+    "image": "https://opengraph.githubassets.com/5d547e1ea4cb6ac87469e4057760ceb5e787d522f3c9909749bf1d279d7155fc/jill64/typed-storage"
   },
   "publishConfig": {
     "access": "public"
