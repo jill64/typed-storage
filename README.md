@@ -43,7 +43,7 @@ const storedValue = store.get()
 
 store.set(value)
 
-const unsubscriber = store.subscribe((newValue) => {
+const unsubscriber = store.addListener((newValue) => {
   // called when localStorage value changes
   console.log(newValue)
 })
