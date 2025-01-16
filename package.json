@@ -60,7 +60,7 @@
     "happy-dom": "16.3.0",
     "typescanner": "0.5.3",
     "typescript": "5.7.2",
-    "vitest": "3.0.0"
+    "vitest": "3.0.1"
   },
   "dependencies": {
     "ts-serde": "1.0.8"
