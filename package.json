@@ -55,7 +55,7 @@
   },
   "prettier": "@jill64/prettier-config",
   "devDependencies": {
-    "@jill64/eslint-config-ts": "2.0.3",
+    "@jill64/eslint-config-ts": "2.0.4",
     "@jill64/prettier-config": "1.0.0",
     "happy-dom": "16.3.0",
     "typescanner": "0.5.3",
