@@ -2,11 +2,11 @@
 
 # @jill64/typed-storage
 
+
 <!----- BEGIN GHOST DOCS BADGES ----->
-
 <a href="https://npmjs.com/package/@jill64/typed-storage"><img src="https://img.shields.io/npm/v/@jill64/typed-storage" alt="npm-version" /></a> <a href="https://npmjs.com/package/@jill64/typed-storage"><img src="https://img.shields.io/npm/l/@jill64/typed-storage" alt="npm-license" /></a> <a href="https://npmjs.com/package/@jill64/typed-storage"><img src="https://img.shields.io/npm/dm/@jill64/typed-storage" alt="npm-download-month" /></a> <a href="https://npmjs.com/package/@jill64/typed-storage"><img src="https://img.shields.io/bundlephobia/min/@jill64/typed-storage" alt="npm-min-size" /></a> <a href="https://github.com/jill64/typed-storage/actions/workflows/ci.yml"><img src="https://github.com/jill64/typed-storage/actions/workflows/ci.yml/badge.svg" alt="ci.yml" /></a>
-
 <!----- END GHOST DOCS BADGES ----->
+
 
 🗃️ Type-Safe Web Storage API Wrapper
 
