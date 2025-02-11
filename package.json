@@ -41,7 +41,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jill64/typed-storage.git",
-    "image": "https://opengraph.githubassets.com/8824e3e8e3fa0c1fd78313ac94aa23927d3f459669f5b5e84e8c9fefb3a964f3/jill64/typed-storage"
+    "image": "https://opengraph.githubassets.com/1ceb4bd703012a4eb50a4a8a014c12ed74d1fb5fcf367209ed2a48a9937551fa/jill64/typed-storage"
   },
   "publishConfig": {
     "access": "public"
@@ -57,7 +57,7 @@
   "devDependencies": {
     "@jill64/eslint-config-ts": "2.0.8",
     "@jill64/prettier-config": "1.0.0",
-    "happy-dom": "17.0.3",
+    "happy-dom": "17.0.4",
     "typescanner": "0.5.3",
     "typescript": "5.7.3",
     "vitest": "3.0.5"
