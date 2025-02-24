@@ -1,6 +1,6 @@
 {
   "name": "@jill64/typed-storage",
-  "version": "3.1.5",
+  "version": "3.1.6",
   "type": "module",
   "description": "🗃️ Type-Safe Web Storage API Wrapper",
   "main": "dist/index.js",
