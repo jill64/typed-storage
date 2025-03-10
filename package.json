@@ -47,20 +47,19 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc && npx publint",
-    "test": "vitest",
-    "prepack": "npm run build",
-    "format": "npx prettier -w .",
-    "lint": "npx eslint . && npx depcheck"
+    "build": "tsc && bunx publint",
+    "test": "bun test",
+    "prepack": "bun run build",
+    "format": "bunx prettier -w .",
+    "lint": "eslint ."
   },
   "prettier": "@jill64/prettier-config",
   "devDependencies": {
-    "@jill64/eslint-config-ts": "2.0.8",
+    "@happy-dom/global-registrator": "17.4.3",
+    "@jill64/eslint-config-ts": "2.0.16",
     "@jill64/prettier-config": "1.0.0",
-    "happy-dom": "17.4.3",
     "typescanner": "0.5.3",
-    "typescript": "5.8.2",
-    "vitest": "3.0.8"
+    "typescript": "5.8.2"
   },
   "dependencies": {
     "ts-serde": "1.0.8"
