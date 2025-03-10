@@ -57,7 +57,6 @@ test('array', () => {
 })
 
 test('unavailable typedStorage', () => {
-  // eslint-disable-next-line no-global-assign
   window = undefined as unknown as Window & typeof globalThis
 
   const value = 'value'
@@ -92,7 +91,6 @@ test('unavailable typedStorage', () => {
 
   expect(sessionStore.get()).toBe('')
 
-  // eslint-disable-next-line no-global-assign
   window = {
     sessionStorage: {
       getItem: () => null,

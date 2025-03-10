@@ -1,6 +1,6 @@
 {
   "name": "@jill64/typed-storage",
-  "version": "3.1.6",
+  "version": "4.0.0",
   "type": "module",
   "description": "🗃️ Type-Safe Web Storage API Wrapper",
   "main": "dist/index.js",
@@ -41,26 +41,25 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jill64/typed-storage.git",
-    "image": "https://opengraph.githubassets.com/a2a3ed5ed384bf89ba67c9266defe78fee6eb41541cc2743019e9f5b454109a3/jill64/typed-storage"
+    "image": "https://opengraph.githubassets.com/b7737556fbbfe86f3c59c53fc2525efeb439e638a00d157a70bf5db8607c490b/jill64/typed-storage"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc && npx publint",
-    "test": "vitest",
-    "prepack": "npm run build",
-    "format": "npx prettier -w .",
-    "lint": "npx eslint . && npx depcheck"
+    "build": "tsc && bunx publint",
+    "test": "bun test",
+    "prepack": "bun run build",
+    "format": "bunx prettier -w .",
+    "lint": "eslint ."
   },
   "prettier": "@jill64/prettier-config",
   "devDependencies": {
-    "@jill64/eslint-config-ts": "2.0.8",
+    "@happy-dom/global-registrator": "17.4.3",
+    "@jill64/eslint-config-ts": "2.0.16",
     "@jill64/prettier-config": "1.0.0",
-    "happy-dom": "17.4.3",
     "typescanner": "0.5.3",
-    "typescript": "5.8.2",
-    "vitest": "3.0.8"
+    "typescript": "5.8.2"
   },
   "dependencies": {
     "ts-serde": "1.0.8"
